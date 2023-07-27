@@ -1,8 +1,14 @@
 import { View, Text, Image,StyleSheet } from 'react-native'
 import React from 'react'
-import Ellipse from '../Components/Ellipse'
+import { useNavigation } from '@react-navigation/native';
 
 export default function Firstscreen() {
+  const navigation = useNavigation(); 
+
+  const handleSkip = () => {
+    navigation.navigate('Secondscreen'); 
+  };
+  
   return (
     <View>
       <View style={styles.maincontainer}>
@@ -21,7 +27,10 @@ export default function Firstscreen() {
       </View>
       <View>
         <Text style={styles.text3}>BOOK your appointment online and connect with a doctor to get medical advice ay your place place with your perferred timings</Text> 
-      </View>    
+      </View> 
+      <View>
+        <Text onPress={handleSkip} style={styles.skip1}>Skip</Text>
+      </View>
     </View>
   )
 }
@@ -32,9 +41,9 @@ const styles = StyleSheet.create({
         flexDirection:'row'
     },
     image:{
-        width:120,
-        height:120,
-        marginTop:'40%',
+        width:119,
+        height:119 ,
+        marginTop:'35%',
         borderWidth:8,
         borderColor:'#c4c4c4'
     },
@@ -53,9 +62,8 @@ const styles = StyleSheet.create({
     textall:{
         flexDirection:'row',
         justifyContent:'space-evenly',
-        marginTop:"5%"
+        marginTop:"12%"
     },
-    
     texts:{
         fontFamily:'Abhaya Libre',
         fontSize:25,
@@ -63,6 +71,7 @@ const styles = StyleSheet.create({
         letterSpacing:0,
         lineHeight:45,
         alignContent:'flex-start',
+        paddingRight:'20%',
     },
     text:{
         fontFamily: 'Abhaya Libre',
@@ -75,19 +84,16 @@ const styles = StyleSheet.create({
         fontFamily: 'Abhaya Libre',
         fontSize: 22,
         fontWeight: '400',
-        //lineHeight: 94,
         letterSpacing: 0,
         alignItems:'center',
-        // justifyContent:'center',
         marginHorizontal:'5%',
-     },
-     ellipse:{
-        width: 16,
-        height: 9,
-        top: 843,
-        left: 16,
-        color:'#c4c4c4'
-
-     }
-    
+        marginTop:'5%'
+    },
+    skip1:{
+      flexDirection:'row',
+      justifyContent:'space-between',
+      marginLeft:'83%',
+      marginTop:'15%',
+      fontSize:20
+    }
 })
