@@ -43,7 +43,7 @@ export default function Login() {
             flagButtonStyle={styles.flagButtonStyle}
             codeTextStyle={{ color: '#000' }} 
           />
-        </View>
+        </View> 
 
         <Button
         style={styles.continueButton}
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },*/
 
   phonenumber:{
-    marginTop: '30%',
+    marginTop: '20%',
     alignItems:'center',
     backgroundColor:'white',
     borderRadius:20,
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
 
   continueButton: {
     backgroundColor: '#0A9EF1',
-    marginTop: 20,
+    marginTop: 35,
     paddingVertical: 10,
     borderRadius: 20,
     alignItems: 'center',
@@ -150,6 +150,7 @@ const styles = StyleSheet.create({
   },
   iconrow:{
     justifyContent:'center',
+    marginTop:25
   },
   continue: {
     backgroundColor: '#3369DB',
@@ -168,7 +169,7 @@ const styles = StyleSheet.create({
   },
   continue1: {
     backgroundColor: '#FFFFFF',
-    marginTop: 25,
+    marginTop: 35,
     paddingVertical: 10,
     borderRadius: 20,
     alignItems: 'center',
@@ -205,3 +206,4 @@ const styles = StyleSheet.create({
     marginRight:25
   } 
 });
+

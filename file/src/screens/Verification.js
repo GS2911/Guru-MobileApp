@@ -1,5 +1,5 @@
 import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Button from '../Components/Button';
@@ -12,15 +12,21 @@ export default function Verification() {
     navigation.goBack();
   }
 
+  const [enterOTP,setenterOTP] = useState('');
+  const commonOTP ='1234';
+
   const handleSubmit =()=>{
-    navigation.navigate()
+    if (enterOTP === commonOTP){
+      navigation.navigate('Verification2')
+    } else{
+      alert('Incorrect OTP. place try again.')
+    }
   }
 
   const firstInput = useRef()
   const secondInput = useRef()
   const thirdInput = useRef()
   const fourthInput = useRef()
-
 
   return (
     <ImageBackground style={styles.image} source={require('../assets/guru.png')}>
@@ -36,6 +42,7 @@ export default function Verification() {
               maxLength={1}
               ref={firstInput}
               onChangeText={(text) => {
+                setenterOTP(text);
                 text && secondInput.current.focus()
               }}
             />
@@ -46,6 +53,7 @@ export default function Verification() {
               maxLength={1}
               ref={secondInput}
               onChangeText={(text) => {
+                setenterOTP(enterOTP + text);
                 text ? thirdInput.current.focus() : firstInput.current.focus();
               }}
             />
@@ -56,6 +64,7 @@ export default function Verification() {
               maxLength={1}
               ref={thirdInput}
               onChangeText={(text) => {
+                setenterOTP(enterOTP + text);
                 text ? fourthInput.current.focus() : secondInput.current.focus();
               }}
             />
@@ -66,6 +75,7 @@ export default function Verification() {
               maxLength={1}
               ref={fourthInput}
               onChangeText={(text) => {
+                setenterOTP(enterOTP + text);
                 !text && thirdInput.current.focus();
               }}
             />
@@ -79,7 +89,7 @@ export default function Verification() {
           <Button 
           style={styles.continueButton}
           text={'Sumbit'}
-          
+          onPress={handleSubmit}
           />
         </View>
         
