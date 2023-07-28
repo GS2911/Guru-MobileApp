@@ -7,6 +7,7 @@ import Login from '../screens/Login';
 import Register from '../screens/Register';
 import Verification from '../screens/Verification';
 import Verification2 from '../screens/Verification2';
+import Daashboard from '../screens/Daashboard';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ export default function StackNavigation(){
             <Stack.Screen name='Register' component={Register} />
             <Stack.Screen name='Verification' component={Verification} />
             <Stack.Screen name='Verification2' component={Verification2} />
+            <Stack.Screen name='Daashboard' component={Daashboard} />
             </Stack.Navigator>
         </NavigationContainer>
     )

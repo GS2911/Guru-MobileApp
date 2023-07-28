@@ -1,8 +1,9 @@
-import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
+import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity,KeyboardType} from 'react-native'
 import React, {useRef, useState} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Button from '../Components/Button';
+import OTPinput from '../Components/OTPinput';
 
 export default function Verification() {
 
@@ -27,6 +28,7 @@ export default function Verification() {
   const secondInput = useRef()
   const thirdInput = useRef()
   const fourthInput = useRef()
+  const [otp, setotp] = useState({1:'',2:'',3:'',4:''})
 
   return (
     <ImageBackground style={styles.image} source={require('../assets/guru.png')}>
@@ -36,51 +38,57 @@ export default function Verification() {
           <Text style={styles.text2}>Enter the OTP code form the phone we just sent you.</Text>
         </View>
         <View style={styles.otpcontainer}>
-          <View style={styles.otpBox}>
-            <TextInput style={styles.otpText}
+          
+            <OTPinput style={styles.otpText}
               keyboardType='number-pad'
               maxLength={1}
               ref={firstInput}
               onChangeText={(text) => {
                 setenterOTP(text);
-                text && secondInput.current.focus()
+                setotp({...otp,1: text})
+                text && secondInput.current.focus();
               }}
+              refcallback={firstInput}
             />
-          </View >
-          <View style={styles.otpBox}>
-            <TextInput style={styles.otpText}
+          
+            <OTPinput style={styles.otpText}
               keyboardType='number-pad'
               maxLength={1}
               ref={secondInput}
               onChangeText={(text) => {
                 setenterOTP(enterOTP + text);
+                setotp({...otp,2: text})
                 text ? thirdInput.current.focus() : firstInput.current.focus();
               }}
+              refcallback={secondInput}
             />
-          </View>
-          <View style={styles.otpBox}>
-            <TextInput style={styles.otpText}
+          
+            <OTPinput style={styles.otpText}
               keyboardType='number-pad'
               maxLength={1}
               ref={thirdInput}
               onChangeText={(text) => {
                 setenterOTP(enterOTP + text);
+                setotp({...otp,3: text})
                 text ? fourthInput.current.focus() : secondInput.current.focus();
               }}
+              refcallback={thirdInput}
             />
-          </View>
-          <View style={styles.otpBox}>
-            <TextInput style={styles.otpText}
+         
+            <OTPinput style={styles.otpText}
               keyboardType='number-pad'
               maxLength={1}
               ref={fourthInput}
               onChangeText={(text) => {
                 setenterOTP(enterOTP + text);
+                setotp({...otp,4: text})
                 !text && thirdInput.current.focus();
               }}
+              refcallback={fourthInput}
             />
-          </View>
+          
         </View>
+
         <View>
           <Text style={styles.text}>Dindn't receive OTP Code! Resend</Text>
         </View>

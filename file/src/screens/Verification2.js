@@ -18,7 +18,7 @@ export default function Verification2() {
 
     const handleSubmit =() =>{
         if (enterOTP === commonOTP){
-            navigation.navigate('Verification2')
+            navigation.navigate('Daashboard')
         }else{
             alert('Incorrect OTP. place try again.')
         }
